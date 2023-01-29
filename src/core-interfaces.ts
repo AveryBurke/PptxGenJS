@@ -1,7 +1,7 @@
 /**
  * PptxGenJS Interfaces
  */
-
+import { Group } from './group'
 import { CHART_NAME, PLACEHOLDER_TYPE, SHAPE_NAME, SLIDE_OBJECT_TYPES, TEXT_HALIGN, TEXT_VALIGN, WRITE_OUTPUT_TYPE } from './core-enums'
 
 // Core Types
@@ -1645,6 +1645,7 @@ export interface ISlideObject {
 	mtype?: MediaType
 	mediaRid?: number
 	shape?: SHAPE_NAME
+	group?: Group
 }
 // PRIVATE ^^^
 
@@ -1742,7 +1743,10 @@ export interface ObjectOptions extends ImageProps, PositionProps, ShapeProps, Ta
 	colW?: number | number[] // table
 	rowH?: number | number[] // table
 }
-export interface SlideBaseProps {
+export interface Container {
+	_slideObjects?: ISlideObject[]
+}
+export interface SlideBaseProps extends Container {
 	_bkgdImgRid?: number
 	_margin?: Margin
 	_name?: string
@@ -1752,7 +1756,7 @@ export interface SlideBaseProps {
 	_relsMedia: ISlideRelMedia[] // needed as we use args:"PresSlide|SlideLayout" often
 	_slideNum: number
 	_slideNumberProps?: SlideNumberProps
-	_slideObjects?: ISlideObject[]
+
 
 	background?: BackgroundProps
 	/**
@@ -1780,6 +1784,7 @@ export interface PresSlide extends SlideBaseProps {
 	addShape: (shapeName: SHAPE_NAME, options?: ShapeProps) => PresSlide
 	addTable: (tableRows: TableRow[], options?: TableProps) => PresSlide
 	addText: (text: string | TextProps[], options?: TextPropsOptions) => PresSlide
+	addGroup: Function
 
 	/**
 	 * Background color or image (`color` | `path` | `data`)

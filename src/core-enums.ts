@@ -721,6 +721,7 @@ export enum SCHEME_COLOR_NAMES {
 
 export enum MASTER_OBJECTS {
 	'chart' = 'chart',
+	'group' = 'group',
 	'image' = 'image',
 	'line' = 'line',
 	'rect' = 'rect',
@@ -730,6 +731,7 @@ export enum MASTER_OBJECTS {
 
 export enum SLIDE_OBJECT_TYPES {
 	'chart' = 'chart',
+	'group' = 'group',
 	'hyperlink' = 'hyperlink',
 	'image' = 'image',
 	'media' = 'media',
