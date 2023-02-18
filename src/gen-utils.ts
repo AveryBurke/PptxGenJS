@@ -3,7 +3,7 @@
  */
 
 import { EMU, REGEX_HEX_COLOR, DEF_FONT_COLOR, ONEPT, SchemeColor, SCHEME_COLORS } from './core-enums'
-import { Coord, PresLayout, TextGlowProps, PresSlide, ShapeFillProps, Color, ShapeLineProps } from './core-interfaces'
+import { Coord, PresLayout, TextGlowProps, PresSlide, ShapeFillProps, Color, ShapeLineProps, ShapeGlowProps } from './core-interfaces'
 
 /**
  * Translates any type of `x`/`y`/`w`/`h` prop to EMU
@@ -166,7 +166,7 @@ export function createColorElement (colorStr: string | SCHEME_COLORS, innerEleme
  * @see http://officeopenxml.com/drwSp-effects.php
  * { size: 8, color: 'FFFFFF', opacity: 0.75 };
  */
-export function createGlowElement (options: TextGlowProps, defaults: TextGlowProps): string {
+export function createGlowElement (options: TextGlowProps | ShapeGlowProps, defaults: TextGlowProps | ShapeGlowProps): string {
 	let strXml = ''
 	const opts = { ...defaults, ...options }
 	const size = Math.round(opts.size * ONEPT)

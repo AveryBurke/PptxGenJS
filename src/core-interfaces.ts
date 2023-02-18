@@ -166,6 +166,26 @@ export interface ShadowProps {
 	color?: HexColor
 	rotateWithShape?: boolean
 }
+
+export interface ShapeGlowProps {
+	/**
+	 * Border color (hex format)
+	 * @example 'FF3399'
+	 */
+	color?: HexColor
+	/**
+	 * transparency 0-100%
+	 * @default 0
+	 *
+	 */
+	opacity?: number //<-- this should be transparency but it clashes with TextGlowProps
+	/**
+	 * radius in EMUS
+	 * @default 0
+	 */
+	size: number //<-- I am calling this 'size' for now so that it doesn't clash with the TextGlowProps. but it should be 'rad
+}
+
 // used by: shape, table, text
 export interface ShapeFillProps {
 	/**
@@ -616,6 +636,13 @@ export interface ShapeProps extends PositionProps, ObjectNameProps {
 	 * Add hyperlink to shape
 	 * @example hyperlink: { url: "https://github.com/gitbrent/pptxgenjs", tooltip: "Visit Homepage" },
 	 */
+	/**
+	 * Shape glow color properties
+	 * @example { color:'FF0000' } // hex color (red)
+	 * @example { color:'0088CC', transparency:50, rad:100 } // hex color, 50% transparent, radius 100pts
+	 * @example { color:pptx.SchemeColor.accent1 } // Theme color Accent1
+	 */
+	glow?: ShapeGlowProps
 	hyperlink?: HyperlinkProps
 	/**
 	 * Line options

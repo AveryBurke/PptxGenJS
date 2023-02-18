@@ -30,6 +30,11 @@ export declare const DEF_SHAPE_SHADOW: {
     opacity: number;
     rotateWithShape: boolean;
 };
+export declare const DEF_SHAPE_GLOW: {
+    size: number;
+    color: string;
+    opacity: number;
+};
 export declare const DEF_SLIDE_BKGD = "FFFFFF";
 export declare const DEF_SLIDE_MARGIN_IN: [number, number, number, number];
 export declare const DEF_TEXT_SHADOW: {

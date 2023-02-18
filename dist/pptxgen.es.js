@@ -97,6 +97,7 @@ var DEF_PRES_LAYOUT = 'LAYOUT_16x9';
 var DEF_PRES_LAYOUT_NAME = 'DEFAULT';
 var DEF_SHAPE_LINE_COLOR = '333333';
 var DEF_SHAPE_SHADOW = { type: 'outer', blur: 3, offset: 23000 / 12700, angle: 90, color: '000000', opacity: 0.35, rotateWithShape: true };
+var DEF_SHAPE_GLOW = { size: 8, color: '#FFFFFF', opacity: 1 };
 var DEF_SLIDE_MARGIN_IN = [0.5, 0.5, 0.5, 0.5]; // TRBL-style
 var DEF_TEXT_SHADOW = { type: 'outer', blur: 8, offset: 4, angle: 270, color: '000000', opacity: 0.75 };
 var DEF_TEXT_GLOW = { size: 8, color: 'FFFFFF', opacity: 0.75 };
@@ -2065,6 +2066,9 @@ function slideItemObjsToXml(slideItemObjs, slide) {
                     strSlideXml += " <a:alpha val=\"".concat(slideItemObj.options.shadow.opacity, "\"/></a:srgbClr>");
                     strSlideXml += ' </a:outerShdw>';
                     strSlideXml += '</a:effectLst>';
+                }
+                if (slideItemObj.options.glow) {
+                    strSlideXml += "<a:effectLst>".concat(createGlowElement(slideItemObj.options.glow, DEF_SHAPE_GLOW), "</a:effectLst>");
                 }
                 /* TODO: FUTURE: Text wrapping (copied from MS-PPTX export)
                     // Commented out b/c i'm not even sure this works - current code produces text that wraps in shapes and textboxes, so...

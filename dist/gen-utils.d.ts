@@ -2,7 +2,7 @@
  * PptxGenJS: Utility Methods
  */
 import { SCHEME_COLORS } from './core-enums';
-import { Coord, PresLayout, TextGlowProps, PresSlide, ShapeFillProps, Color, ShapeLineProps } from './core-interfaces';
+import { Coord, PresLayout, TextGlowProps, PresSlide, ShapeFillProps, Color, ShapeLineProps, ShapeGlowProps } from './core-interfaces';
 /**
  * Translates any type of `x`/`y`/`w`/`h` prop to EMU
  * - guaranteed to return a result regardless of undefined, null, etc. (0)
@@ -81,7 +81,7 @@ export declare function createColorElement(colorStr: string | SCHEME_COLORS, inn
  * @see http://officeopenxml.com/drwSp-effects.php
  * { size: 8, color: 'FFFFFF', opacity: 0.75 };
  */
-export declare function createGlowElement(options: TextGlowProps, defaults: TextGlowProps): string;
+export declare function createGlowElement(options: TextGlowProps | ShapeGlowProps, defaults: TextGlowProps | ShapeGlowProps): string;
 /**
  * Create color selection
  * @param {Color | ShapeFillProps | ShapeLineProps} props fill props

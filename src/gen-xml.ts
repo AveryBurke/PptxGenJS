@@ -8,6 +8,7 @@ import {
 	DEF_BULLET_MARGIN,
 	DEF_CELL_MARGIN_IN,
 	DEF_PRES_LAYOUT_NAME,
+	DEF_SHAPE_GLOW,
 	DEF_TEXT_GLOW,
 	DEF_TEXT_SHADOW,
 	EMU,
@@ -28,6 +29,7 @@ import {
 	SlideLayout,
 	TableCell,
 	TableCellProps,
+	TextGlowProps,
 	TextProps,
 	TextPropsOptions,
 } from './core-interfaces'
@@ -565,6 +567,10 @@ function slideItemObjsToXml(slideItemObjs: ISlideObject[], slide: PresSlide | Sl
 					strSlideXml += ` <a:alpha val="${slideItemObj.options.shadow.opacity}"/></a:srgbClr>`
 					strSlideXml += ' </a:outerShdw>'
 					strSlideXml += '</a:effectLst>'
+				}
+
+				if (slideItemObj.options.glow) {
+					strSlideXml += `<a:effectLst>${createGlowElement(slideItemObj.options.glow, DEF_SHAPE_GLOW)}</a:effectLst>`
 				}
 
 				/* TODO: FUTURE: Text wrapping (copied from MS-PPTX export)
